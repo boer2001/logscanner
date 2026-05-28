@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.Logscanner" parent="Theme.MaterialComponents.Light" />
+</resources>

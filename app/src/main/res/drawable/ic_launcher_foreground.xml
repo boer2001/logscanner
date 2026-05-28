@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Log Shape -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,48h44c3,0 5,2 5,5v2c0,3 -2,5 -5,5h-44c-3,0 -5,-2 -5,-5v-2c0,-3 2,-5 5,-5z" />
+
+    <!-- Barcode lines (using the same blue as the background for contrast) -->
+    <path
+        android:strokeColor="#004E92"
+        android:strokeWidth="1.2"
+        android:pathData="M40,51v6M44,51v6M47,51v6M52,51v6M58,51v6M63,51v6M68,51v6" />
+
+    <!-- Scanner Corners (Cyan) -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M30,30h12v3h-9v9h-3zM78,30h-12v3h9v9h3zM30,78h12v-3h-9v-9h-3zM78,78h-12v-3h9v-9h3z" />
+
+    <!-- Scanning Line (Cyan) -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2"
+        android:pathData="M25,54h58"
+        android:strokeLineCap="round" />
+
+</vector>

@@ -12,24 +12,29 @@ class BarcodeAnalyzer(
     private val onBarcodeDetected: (String) -> Unit
 ) : ImageAnalysis.Analyzer {
 
-    private val scanner = BarcodeScanning.getClient()
+    private val scanner by lazy { BarcodeScanning.getClient() }
 
     @OptIn(ExperimentalGetImage::class)
     override fun analyze(imageProxy: ImageProxy) {
         val mediaImage = imageProxy.image
         if (mediaImage != null) {
             val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
-            scanner.process(image)
-                .addOnSuccessListener { barcodes ->
-                    for (barcode in barcodes) {
-                        barcode.rawValue?.let { value ->
-                            onBarcodeDetected(value)
+            try {
+                scanner.process(image)
+                    .addOnSuccessListener { barcodes ->
+                        for (barcode in barcodes) {
+                            barcode.rawValue?.let { value ->
+                                onBarcodeDetected(value)
+                            }
                         }
                     }
-                }
-                .addOnCompleteListener {
-                    imageProxy.close()
-                }
+                    .addOnCompleteListener {
+                        imageProxy.close()
+                    }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                imageProxy.close()
+            }
         } else {
             imageProxy.close()
         }

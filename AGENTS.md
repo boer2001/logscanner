@@ -52,6 +52,11 @@ suspend fun syncData()  // Orchestrates upload + download
 - Key endpoints: `GET /logs`, `POST /scans`
 - Response wrapper: `SyncResponse(success, message, syncedIds)`
 
+### Huawei/Non-GMS Compatibility
+- **Scanning**: Dual-strategy using `BarcodeAnalyzer`. Uses HMS Scan Kit (`com.huawei.hms:scanplus`) on Huawei devices for optimized performance and ML Kit (bundled version) as a fallback/default.
+- **Location Services**: Play Services location dependency removed (to support non-GMS devices like Huawei).
+- **Repositories**: Huawei Maven repository added to `settings.gradle.kts`.
+
 ## UI Layer
 
 ### Navigation3 (Sealed Type-Safe Routes)

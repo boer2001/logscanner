@@ -98,7 +98,7 @@ fun ScannerContent(viewModel: ScannerViewModel, onHistoryClick: () -> Unit) {
             .also {
                 it.setAnalyzer(
                     ContextCompat.getMainExecutor(context),
-                    BarcodeAnalyzer { barcode ->
+                    BarcodeAnalyzer(context) { barcode ->
                         viewModel.onBarcodeDetected(barcode)
                     }
                 )
